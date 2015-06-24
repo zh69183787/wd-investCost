@@ -1,0 +1,44 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="dwProject" namespace="/dwProject" extends="cuteframework-default">
+
+		<action name="showReport" class="dwProjectAction" method="showReport">
+			<result>/jsp/report/projectReport.jsp</result>
+		</action>		
+		
+		<action name="showReport4" class="dwProjectApproveAction" method="showReport4">
+			<!-- <result>/jsp/report/projectReport4.jsp</result> -->
+			<result>/jsp/report/projectReport4_v2.jsp</result>
+		</action>
+		
+		<action name="showReport8" class="dwProjectInvestPayAction" method="showReport8">
+			<result>/jsp/report/projectReport8.jsp</result>
+		</action>
+		
+		<action name="findAllData" class="dwProjectAction" method="findAllData" />
+		
+		<action name="findAllData8" class="dwProjectInvestPayAction" method="findAllData8" />
+		
+		<action name="countAllPaysForProject" class="dwProjectInvestPayAction" method="countAllPaysForProject">
+			<result>/jsp/success.jsp</result>
+		</action>
+		
+		<action name="calculateDwProjectCover" class="dwProjectCoverAction" method="calculateDwProjectCover">
+			<result type="redirectAction">
+				<param name="namespace">/project</param>
+				<param name="actionName">showProjectCover</param>
+			</result>
+		</action>
+		
+		<action name="calculateDwProjectCoverOnSchedule" class="dwProjectCoverAction" method="calculateDwProjectCoverOnSchedule"/>
+		
+		<!-- sunjiawei -->
+		<action name="showReportTemp" class="dwProjectTempAction" method="showReport">
+			<result>/jsp/report/projectReportTemp.jsp</result>
+		</action>	
+		<action name="findAllDataTemp" class="dwProjectTempAction" method="findAllData" />
+	</package>
+</struts>
+	

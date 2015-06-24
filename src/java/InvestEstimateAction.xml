@@ -1,0 +1,36 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="investEstimate" namespace="/investEstimate" extends="cuteframework-default">
+
+		<action name="findInvestEstimateByPage" class="investEstimateAction" method="findInvestEstimateByPage">
+			<result>/jsp/estimate/estimateList.jsp</result>
+		</action>
+		
+		<action name="showAdd" class="investEstimateAction" method="showAdd">
+			<result>/jsp/estimate/estimateAdd.jsp</result>
+		</action>
+		<action name="saveAdd" class="investEstimateAction" method="saveAdd">
+			<result>/jsp/success.jsp</result>
+		</action>
+		
+		<action name="showView" class="investEstimateAction" method="showView">
+			<result>/jsp/estimate/estimateView.jsp</result>
+		</action>
+		
+		<action name="showEdit" class="investEstimateAction" method="showEdit">
+			<result>/jsp/estimate/estimateEdit.jsp</result>
+		</action>
+		<action name="saveEdit" class="investEstimateAction" method="saveEdit">
+			<result>/jsp/success.jsp</result>
+		</action>
+		
+		<action name="delete" class="investEstimateAction" method="delete" />
+		
+		<action name="saveOrUpdateOnPage" class="investEstimateAction" method="saveOrUpdateOnPage" />
+		
+
+	</package>
+</struts>
+	

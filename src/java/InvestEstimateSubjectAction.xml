@@ -1,0 +1,40 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="estimateSubject" namespace="/estimateSubject" extends="cuteframework-default">
+
+		
+		<action name="findInvestEstimateSubjectByPage" class="investEstimateSubjectAction" method="findInvestEstimateSubjectByPage">
+			<result>/jsp/estimateSubject/estimateSubjectList.jsp</result>
+			<result name="view">/jsp/estimateSubject/estimateSubjectListView.jsp</result>
+		</action>
+		
+		<action name="showView" class="investEstimateSubjectAction" method="showView">
+			<result>/jsp/estimateSubject/estimateSubjectView.jsp</result>
+		</action>
+		
+		<action name="deleteAll" class="investEstimateSubjectAction" method="deleteAll"/>
+
+		<action name="saveAddOnPage" class="investEstimateSubjectAction" method="saveAddOnPage"/>
+
+		<action name="saveEditOnPage" class="investEstimateSubjectAction" method="saveEditOnPage" />
+
+		<action name="compute" class="investEstimateSubjectAction" method="compute" />
+		
+		<action name="saveObjectControlValue" class="investEstimateSubjectAction" method="saveObjectControlValue"/>
+
+		<action name="saveAddOnPageSpecial" class="investEstimateSubjectAction" method="saveAddOnPageSpecial"/>
+		
+		<action name="saveEditOnPageSpecial" class="investEstimateSubjectAction" method="saveEditOnPageSpecial" />
+		
+		<action name="deleteSpecial" class="investEstimateSubjectAction" method="deleteSpecial"/>
+		
+		<action name="showAllContract" class="investEstimateSubjectAction" method="showAllContract"/>
+		
+		<action name="findInvestEstimateSubjectByPageForBind" class="investEstimateSubjectAction" method="findInvestEstimateSubjectByPageForBind">
+			<result>/jsp/estimateSubject/estimateSubjectList_forBind.jsp</result>
+		</action>
+	</package>
+</struts>
+	

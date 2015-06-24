@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts> 
+  <package name="default" extends="cuteframework-default"/>  
+  <include file="/ContractAction.xml"/>  
+  <include file="/ContractPlanAction.xml"/>  
+  <include file="/InvestEstimateAction.xml"/>  
+  <include file="/InvestEstimateSubjectAction.xml"/>  
+  <include file="/ProjectAction.xml"/>  
+  <include file="/QuantitiesListAction.xml"/>  
+  <include file="/QuantitiesSubjectAction.xml"/>  
+  <include file="/AttachAction.xml"/>  
+  <include file="/WbsAction.xml"/>  
+  <include file="/DeptTreeAction.xml"/>  
+  <include file="/ContractStatusAction.xml"/>  
+  <include file="/ProgressAction.xml"/>  
+  <include file="/DwProjectAction.xml"/>  
+  <include file="/DwContractAction.xml"/>  
+  <include file="/PsCorporationAction.xml"/>
+  <include file="/JgjReportAction.xml"/>
+
+    <include file="/ProjectApiAction.xml"/>
+    <include file="/ContractApiAction.xml"/>
+    <include file="/PsCorporationApiAction.xml"/>
+  <include file="/FundPlanAction.xml"/>
+  <include file="/FundAllowanceAction.xml"/>
+
+    <include file="/MeetEventAction.xml"/>
+    <include file="/ContractChangeItemAction.xml"/>
+    <include file="/ContractChangeProtocolAction.xml"/>
+</struts>

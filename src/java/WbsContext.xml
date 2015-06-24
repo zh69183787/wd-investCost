@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="wbsDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.wbs.dao.impl.WbsDaoImpl">
+	</bean>
+	
+	<bean id="wbsServiceImpl"
+		class="com.wonders.ic.wbs.service.impl.WbsServiceImpl">
+		<property name="wbsDao" ref="wbsDaoImpl" />
+	</bean>
+	
+	<bean id="wbsService" parent="basicTxProxy">
+		<property name="target" ref="wbsServiceImpl" />
+	</bean>
+	
+	<bean name="wbsAction"
+		class="com.wonders.ic.wbs.action.WbsAction"
+		singleton="false">
+		<property name="wbsService" ref="wbsService"></property>	
+	</bean>
+
+</beans>
+	

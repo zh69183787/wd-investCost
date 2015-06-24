@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="contractConnector"
+		class="com.wonders.webservice.contract.ContractConnector">
+		<property name="contractServiceForWS" ref="contractService" />
+		<property name="projectServiceForWS" ref="projectService" />
+		<property name="attachServiceForWs" ref="attachService" />
+	</bean>
+	
+	
+	
+	<!--
+	<bean id="ContractWsServiceImpl"
+		class="com.wonders.webservice.contract.service.impl.ContractWsServiceImpl">
+		<property name="contractWsDao" ref="contractWsDaoImpl" />
+	</bean>
+	
+	<bean id="contractWsService" parent="basicTxProxy">
+		<property name="target" ref="ContractWsServiceImpl" />
+	</bean>
+	-->
+</beans>
+	

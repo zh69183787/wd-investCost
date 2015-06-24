@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<description>
+		Spring Configuration of CuteFramework Based Application.
+	</description>
+	<import resource="classpath:frameworkContext.xml" />
+	<!--<import resource="classpath:extendContext.xml" /> -->
+	<!--
+		Dictionary Component Config <import
+		resource="classpath:dictContext.xml"/>
+	-->
+	<!--
+		Persistent Session Config <import
+		resource="classpath:sessionContext.xml"/>
+	-->
+	<!-- Security Component Config -->
+	<!--<import resource="classpath:resourceContext.xml" /> -->
+	<!--
+		<import resource="classpath:securityContext.xml" /> <import
+		resource="classpath:appmgrContext.xml" /> <import
+		resource="classpath:organContext.xml" />
+	-->
+	<!--
+		Workflow Component Config <import resource="classpath:bpmsContext.xml"
+		/>
+	-->
+	<!--
+    <import resource="classpath:taglibContext.xml" />
+	-->
+	<!--
+		===================================================================
+	-->
+	<!--
+		Context Define
+	-->
+	<!--
+		===================================================================
+	-->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:database.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!--
+		===================================================================
+	-->
+	<!--
+		Data Source Define (jdbc & jndi)
+	-->
+	<!--
+		===================================================================
+	-->
+	<!-- JDBC Configuration -->
+	<!--<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${hibernate.connection.driver_class}" />
+		<property name="url" value="${hibernate.connection.url}" />
+		<property name="username" value="${hibernate.connection.username}" />
+		<property name="password" value="${hibernate.connection.password}" />
+	</bean>
+	-->
+	
+	<!-- JNDI Configuration -->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/863stptdemo"/>
+	</bean>
+
+	<!-- ShortMessage DataSource -->
+	<bean id="dataSourceMsg" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/863stptinc"/>
+	</bean>
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+			<property name="sessionFactory" ref="sessionFactoryMsg"></property>
+		</bean>
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSourceMsg" />
+	</bean>
+	<bean id="shortMsgDao" class="com.wonders.ic.contract.dao.impl.ShortMsgDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	
+	<!-- JNDI Configuration -->
+	<!--
+		<bean id="dataSource"
+		class="org.springframework.jndi.JndiObjectFactoryBean"> <property
+		name="jndiName" value="java:comp/env/jdbc/CuteFramework"/> </bean>
+	-->
+
+	<!--
+		===================================================================
+	-->
+	<!--
+		SessionFactory(For Hibernate)/ManagerFactory(For JPA) Define
+	-->
+	<!--
+		ONLY ONE OF THEM SHOULD BE USED
+	-->
+	<!--
+		===================================================================
+	-->
+	<bean id="sessionFactory"
+		class="com.wondersgroup.framework.core5.dao.support.EnhancedAnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:hibernate.cfg.xml" />
+		<property name="annotatedPackagePrefixes">
+			<list>
+				<value>com.wondersgroup.framework</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+			</props>
+		</property>
+		<property name="lobHandler" ref="${jdbc.handler}" />
+	</bean>
+	
+	<bean id="sessionFactoryMsg"
+		class="com.wondersgroup.framework.core5.dao.support.EnhancedAnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceMsg" />
+		<property name="configLocation" value="classpath:hibernate.cfg.xml" />
+		<property name="annotatedPackagePrefixes">
+			<list>
+				<value>com.wondersgroup.framework</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+			</props>
+		</property>
+		<property name="lobHandler" ref="${jdbc.handler}" />
+	</bean>
+
+	<!--
+		JPA Entity Manager Factory <bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" /> <property
+		name="persistenceXmlLocation" value="classpath:persistence.xml" />
+		<property name="jpaVendorAdapter"> <bean
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="showSql" value="true" /> <property
+		name="databasePlatform" value="${hibernate.dialect}" /> </bean>
+		</property> </bean>
+	-->
+	<!--
+		<bean id="weblogicJdbcExtractor"
+		class="org.springframework.jdbc.support.nativejdbc.WebLogicNativeJdbcExtractor"
+		lazy-init="true" />
+	-->
+	
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="basicTxProxy" abstract="true"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="remove*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+</beans>

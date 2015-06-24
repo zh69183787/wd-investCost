@@ -1,0 +1,17 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="PsCorporation" namespace="/corporation" extends="cuteframework-default">
+
+		<action name="addPsCorporation" class="psCorporationAction" method="addPsCorporation"/>
+		<action name="deletePsCorporation" class="psCorporationAction" method="deletePsCorporation"/>
+		<action name="findPsCorporationById" class="psCorporationAction" method="findPsCorporationById"/>
+		<action name="findPsCorporationByPage" class="psCorporationAction" method="findPsCorporationByPage"/>
+		<action name="updatePsCorporation" class="psCorporationAction" method="updatePsCorporation"/>
+		<action name="findPsCorporationByCompNameWithFuzzySearch" class="psCorporationAction" method="findPsCorporationByCompNameWithFuzzySearch"/>
+
+        <action name="syncData" class="psSupplierAction" method="syncData"/>
+	</package>
+</struts>
+	

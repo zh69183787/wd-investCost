@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="contractStatusDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.contractStatus.dao.impl.ContractStatusDaoImpl">
+	</bean>
+	
+	<bean id="contractStatusServiceImpl"
+		class="com.wonders.ic.contractStatus.service.impl.ContractStatusServiceImpl">
+		<property name="contractStatusDao" ref="contractStatusDaoImpl" />
+	</bean>
+	
+	<bean id="contractStatusService" parent="basicTxProxy">
+		<property name="target" ref="contractStatusServiceImpl" />
+	</bean>
+	
+	<bean name="contractStatusAction"
+		class="com.wonders.ic.contractStatus.action.ContractStatusAction"
+		singleton="false">
+		<property name="contractStatusService" ref="contractStatusService"></property>
+		<property name="attachService" ref="attachService"></property>
+		<property name="contractService" ref="contractService"></property>
+	</bean>
+
+</beans>
+	

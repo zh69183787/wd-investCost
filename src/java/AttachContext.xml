@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="attachDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.attach.dao.impl.AttachDaoImpl">
+	</bean>
+	
+	<bean id="attachServiceImpl"
+		class="com.wonders.ic.attach.service.impl.AttachServiceImpl">
+		<property name="attachDao" ref="attachDaoImpl" />
+	</bean>
+	
+	<bean id="attachService" parent="basicTxProxy">
+		<property name="target" ref="attachServiceImpl" />
+	</bean>
+	
+	<bean name="attachAction"
+		class="com.wonders.ic.attach.action.AttachAction"
+		singleton="false">
+		<property name="attachService" ref="attachService"></property>	
+	</bean>
+
+</beans>
+	

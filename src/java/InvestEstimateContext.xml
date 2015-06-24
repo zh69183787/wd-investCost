@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	
+	<bean id="investEstimateDaoImpl" parent="abstractHibernateDao" class="com.wonders.ic.investEstimate.dao.impl.InvestEstimateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="investEstimateServiceImpl" class="com.wonders.ic.investEstimate.service.impl.InvestEstimateServiceImpl">
+		<property name="investEstimateDao" ref="investEstimateDaoImpl"></property>
+	</bean>
+	
+	<bean id="investEstimateService" parent="basicTxProxy">
+		<property name="target" ref="investEstimateServiceImpl"></property>
+	</bean>
+	
+	<bean name="investEstimateAction"
+		class="com.wonders.ic.investEstimate.action.InvestEstimateAction"
+		singleton="false">
+		<property name="investEstimateService" ref="investEstimateService"></property>	
+	</bean>
+
+</beans>
+	

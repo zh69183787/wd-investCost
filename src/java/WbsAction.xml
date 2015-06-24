@@ -1,0 +1,15 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="Wbs" namespace="/wbs" extends="cuteframework-default">
+
+		<action name="addWbs" class="wbsAction" method="addWbs"/>
+		<action name="deleteWbs" class="wbsAction" method="deleteWbs"/>
+		<action name="findWbsById" class="wbsAction" method="findWbsById"/>
+		<action name="findWbsByPage" class="wbsAction" method="findWbsByPage"/>
+		<action name="updateWbs" class="wbsAction" method="updateWbs"/>
+
+	</package>
+</struts>
+	

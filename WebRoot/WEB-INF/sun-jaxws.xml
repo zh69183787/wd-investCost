@@ -1,0 +1,8 @@
+<?xml version = "1.0"?>
+<endpoints version="2.0"
+	xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+	<endpoint name="ContractConnectorPort"
+		implementation="com.wonders.webservice.contract.ContractConnectorDelegate"
+		url-pattern="/ContractConnectorPort">
+	</endpoint>
+</endpoints>

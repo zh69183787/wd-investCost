@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+	 
+	<bean id="fundAllowanceDaoImpl" parent="abstractHibernateDao" class="com.wonders.ic.fund.dao.impl.FundAllowanceDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	 
+	<bean id="fundAllowanceServiceImpl" class="com.wonders.ic.fund.service.impl.FundAllowanceServiceImpl">
+		<property name="fundAllowanceDao" ref="fundAllowanceDaoImpl" />
+	</bean>
+	
+	<bean id="fundAllowanceService" parent="basicTxProxy">
+		<property name="target" ref="fundAllowanceServiceImpl" />
+	</bean>
+	
+	<bean name="fundAllowanceAction" class="com.wonders.ic.fund.action.FundAllowanceAction" singleton="false">
+		<property name="fundAllowanceService" ref="fundAllowanceService"></property>
+		<property name="contractService" ref="contractService"></property>
+		<property name="projectService" ref="projectService"></property>
+		<property name="contractStatusService" ref="contractStatusService"></property>
+	</bean>
+
+</beans>
+	

@@ -1,0 +1,24 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="ContractStatus" namespace="/contractStatus" extends="cuteframework-default">
+
+		<action name="addContractStatus" class="contractStatusAction" method="addContractStatus"/>
+		<action name="deleteContractStatus" class="contractStatusAction" method="deleteContractStatus"/>
+		<action name="findContractStatusById" class="contractStatusAction" method="findContractStatusById"/>
+		<action name="findContractStatusByPage" class="contractStatusAction" method="findContractStatusByPage"/>
+		<action name="updateContractStatus" class="contractStatusAction" method="updateContractStatus"/>
+
+		<action name="saveAdd" class="contractStatusAction" method="saveAdd"/>
+		<action name="saveEdit" class="contractStatusAction" method="saveEdit"/>
+		<action name="deleteData" class="contractStatusAction" method="deleteData"/>
+		<action name="fileUpload" class="contractStatusAction" method="fileUpload"/>
+		
+		<action name="showBatchUpload" class="contractStatusAction" method="showBatchUpload">
+			<result>/jsp/contractStatus/statusUpload.jsp</result>
+		</action>
+		<action name="bacthUploadContractStatus" class="contractStatusAction" method="bacthUploadContractStatus"/>
+	</package>
+</struts>
+	

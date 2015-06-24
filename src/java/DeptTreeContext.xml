@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="deptTreeDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.deptTree.dao.impl.DeptTreeDaoImpl">
+	</bean>
+	
+	<bean id="deptTreeServiceImpl"
+		class="com.wonders.ic.deptTree.service.impl.DeptTreeServiceImpl">
+		<property name="deptTreeDao" ref="deptTreeDaoImpl" />
+	</bean>
+	
+	<bean id="deptTreeService" parent="basicTxProxy">
+		<property name="target" ref="deptTreeServiceImpl" />
+	</bean>
+	
+	<bean name="deptTreeAction"
+		class="com.wonders.ic.deptTree.action.DeptTreeAction"
+		singleton="false">
+		<property name="deptTreeService" ref="deptTreeService"></property>	
+	</bean>
+
+</beans>
+	

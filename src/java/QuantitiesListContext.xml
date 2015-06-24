@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	 
+	<bean id="quantitiesListDaoImpl" parent="abstractHibernateDao" class="com.wonders.ic.quantitiesList.dao.impl.QuantitiesListDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	 
+	
+	<bean id="quantitiesListServiceImpl" class="com.wonders.ic.quantitiesList.service.impl.QuantitiesListServiceImpl">
+		<property name="quantitiesListDao" ref="quantitiesListDaoImpl" /> 
+	</bean>
+	
+	<bean id="quantitiesListService" parent="basicTxProxy">
+		<property name="target" ref="quantitiesListServiceImpl" /> 
+	</bean>
+	
+	<bean name="quantitiesListAction"
+		class="com.wonders.ic.quantitiesList.action.QuantitiesListAction"
+		singleton="false">
+		<property name="quantitiesListService" ref="quantitiesListService"></property>	
+	</bean>
+
+</beans>
+	

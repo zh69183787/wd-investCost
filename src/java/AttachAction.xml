@@ -1,0 +1,17 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="Attach" namespace="/attach" extends="cuteframework-default">
+
+		<action name="findAttachByPage" class="attachAction" method="findAttachByPage"/>
+        <action name="getAttachList" class="attachAction" method="getAttachList"/>
+
+		<action name="deleteAttach" class="attachAction" method="deleteAttach"/>
+		
+		<action name="downloadAttach" class="attachAction" method="downloadAttach"/>
+		
+		
+	</package>
+</struts>
+	

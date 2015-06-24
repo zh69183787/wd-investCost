@@ -1,0 +1,43 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="fundPlan" namespace="/fundPlan" extends="cuteframework-default">
+		<action name="findFundPlanByPage" class="fundPlanAction" method="findFundPlanByPage">
+			<result>/jsp/fund/fundPlanList.jsp</result>
+		</action>
+		
+		<action name="showAdd" class="fundPlanAction" method="showAdd">
+			<result>/jsp/fund/fundPlanAdd.jsp</result>
+		</action>
+		
+		<action name="saveAdd" class="fundPlanAction" method="saveAdd">
+			<result name="input">/jsp/fund/fundPlanAdd.jsp</result>
+			<result name="success" type="redirect">showEdit.action?id=${fundPlan.id}&amp;saveStatus=1</result>
+		</action>
+		
+		<action name="saveEdit" class="fundPlanAction" method="saveEdit">
+			<result name="input">/jsp/fund/fundPlanEdit.jsp</result>
+			<result name="success" type="redirect">showEdit.action?id=${fundPlan.id}&amp;saveStatus=1</result>
+		</action>		
+		
+		<action name="showEdit" class="fundPlanAction" method="showEdit">
+			<result name="showEdit">/jsp/fund/fundPlanEdit.jsp</result>
+		</action>
+		
+		<action name="showView" class="fundPlanAction" method="showView">
+			<result>/jsp/fund/fundPlanView.jsp</result>
+		</action>
+		
+		<action name="showBatchUpload" class="fundPlanAction" method="showBatchUpload">
+			<result>/jsp/fund/fundPlanUpload.jsp</result>
+		</action>
+		
+		<action name="delete" class="fundPlanAction" method="delete"/>
+		
+		<action name="batchUpload" class="fundPlanAction" method="batchUpload"/>
+		
+		<action name="downloadFile" class="fundPlanAction" method="downloadFile"/>
+	</package>
+</struts>
+	

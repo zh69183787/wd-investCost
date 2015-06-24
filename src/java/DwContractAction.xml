@@ -1,0 +1,33 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="dwContract" namespace="/dwContract" extends="cuteframework-default">
+
+		<action name="showReport7" class="dwContractChangeAction" method="showReport7">
+			<result>/jsp/report/projectReport7.jsp</result>
+		</action>
+		
+		<action name="showReport6" class="dwContractPayAction" method="showReport6">
+			<result>/jsp/report/projectReport6.jsp</result>
+		</action>
+		
+		<action name="showReport0" class="dwContractProgressAction" method="showReport0">
+			<result>/jsp/report/projectReport0.jsp</result>
+		</action>
+		
+		<action name="calculateDwContractCover" class="dwContractCoverAction" method="calculateDwContractCover">
+			<result type="redirectAction">
+				<param name="namespace">/contract</param>
+				<param name="actionName">showContractCover</param>
+			</result>
+		</action>
+		<action name="calculateDwContractCoverOnSchedule" class="dwContractCoverAction" method="calculateDwContractCoverOnSchedule" />
+		
+		
+		<action name="showReport5" class="dwContractDestoryNumberAction" method="showReport5">
+			<result>/jsp/report/projectReport5.jsp</result>
+		</action>
+	</package>
+</struts>
+	

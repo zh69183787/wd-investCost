@@ -1,0 +1,46 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="jgj" namespace="/jgj" extends="cuteframework-default">
+		
+		<action name="showReportProject" class="jgjReportAction" method="showReportProject">
+			<result name="showReportProject">/jsp/jgjReport/reportProject.jsp</result>
+		</action>
+		
+		<action name="showReportMajor" class="jgjReportAction" method="showReportMajor">
+			<result name="showReportMajor">/jsp/jgjReport/reportMajor.jsp</result>
+		</action>
+		
+		<action name="cal2.1" class="jgjReportAction" method="calculateDwJgjProject">
+		</action>
+		
+		<action name="cal2.4" class="jgjReportAction" method="calculateDwJgjMajor">
+		</action>
+		
+		<action name="showReportProjectCount" class="jgjReportAction" method="showReportProjectCount">
+			<result>/jsp/jgjReport/reportProjectCount.jsp</result>
+		</action>
+		
+		<action name="showReportProjectProgress" class="jgjReportAction" method="showReportProjectProgress">
+			<result>/jsp/jgjReport/reportProjectProgress.jsp</result>
+		</action>
+		
+		<action name="showReportMajorCount" class="jgjReportAction" method="showReportMajorCount">
+			<result>/jsp/jgjReport/reportMajorCount.jsp</result>
+		</action>
+		
+		<action name="showReportMajorCountPlan" class="jgjReportAction" method="showReportMajorCountPlan">
+			<result>/jsp/jgjReport/reportMajorCountPlan.jsp</result>
+		</action>
+		
+		<action name="showReportMajorSeason" class="jgjReportAction" method="showReportMajorSeason">
+			<result>/jsp/jgjReport/reportMajorSeason.jsp</result>
+		</action>
+		
+		<action name="showReportMajorPlan" class="jgjReportAction" method="showReportMajorPlan">
+			<result name="showReportMajor">/jsp/jgjReport/reportMajorPlan.jsp</result>
+		</action>
+	</package>
+</struts>
+	

@@ -1,0 +1,75 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="project" namespace="/project" extends="cuteframework-default">
+	
+		<action name="findProjectByPage" class="projectAction" method="findProjectByPage">
+			<result>/jsp/project/projectList.jsp</result>
+			<result name="viewOnly">/jsp/project/projectListViewOnly.jsp</result>
+        </action>
+
+		<action name="showAdd" class="projectAction" method="showAdd">
+			<result name="showAdd">/jsp/project/projectAdd.jsp</result>
+		</action>
+		
+		<action name="showEdit" class="projectAction" method="showEdit">
+			<result name="showEdit">/jsp/project/projectEdit.jsp</result>
+		</action>
+		
+		<action name="showView" class="projectAction" method="showView">
+			<result name="showView">/jsp/project/projectView.jsp</result>
+		</action>
+		
+		<action name="saveAdd" class="projectAction" method="saveAdd">
+			<result type="redirect">showEdit.action?id=${project.id}</result>
+		</action>
+		<action name="saveEdit" class="projectAction" method="saveEdit">
+			<result type="redirect">showEdit.action?id=${project.id}</result>
+		</action>
+		
+		<action name="delete" class="projectAction" method="delete" />
+		
+		<action name="findProjectByProjectNoWithFuzzySearch" class="projectAction" method="findProjectByProjectNoWithFuzzySearch" />
+		<action name="findProjectByProjectNameWithFuzzySearch" class="projectAction" method="findProjectByProjectNameWithFuzzySearch" />
+		<action name="findProjectByDispatchNoWithFuzzySearch" class="projectAction" method="findProjectByDispatchNoWithFuzzySearch" />
+
+		<action name="findOwnerWithFuzzySearch" class="projectAction" method="findOwnerWithFuzzySearch" />
+		
+		<action name="getLineByCompanyId" class="projectAction" method="getLineByCompanyId" />
+		
+		<action name="findProjectByNameAndNo" class="projectAction" method="findProjectByNameAndNo" />
+		
+		<action name="showProjectCover" class="projectAction" method="showProjectCover">
+			<result>/jsp/project/projectCover.jsp</result>
+		</action>
+		
+		<action name="findProjectByProjectNoAndTypeWithFuzzySearch" class="projectAction" method="findProjectByProjectNoAndTypeWithFuzzySearch" />
+		<action name="findProjectByProjectNameAndTypeWithFuzzySearch" class="projectAction" method="findProjectByProjectNameAndTypeWithFuzzySearch" />
+		
+		<action name="showBusinessControlProjectOvertime" class="projectAction" method="showBusinessControlProjectOvertime">
+			<result>/jsp/project/projectListOvertime.jsp</result>
+        </action>		
+		
+		<action name="findProjectByPageToBeComplemented" class="projectAction" method="findProjectByPageToBeComplemented">
+			<result>/jsp/project/projectListToBeComplemented.jsp</result>
+        </action>
+        
+        
+        <action name="findByCondition" class="projectAction" method="findByCondition">
+			<result>/jsp/project/conditionList.jsp</result>
+        </action>
+        
+        <action name="findByNewCondition" class="projectAction" method="findByNewCondition">
+			<result>/jsp/project/newConditionList.jsp</result>
+        </action>
+		<action name="findNewProjectByPageToBeComplemented" class="projectAction" method="findNewProjectByPageToBeComplemented">
+			<result>/jsp/project/newProjectListToBeComplemented.jsp</result>
+        </action>
+        
+        <action name="findProjectByPageToBeCancelled" class="projectAction" method="findProjectByPageToBeCancelled">
+			<result>/jsp/project/projectListToBeCancelled.jsp</result>
+        </action>		
+	</package>
+</struts>
+	

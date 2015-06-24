@@ -1,0 +1,36 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="quantitiesList" namespace="/quantitiesList" extends="cuteframework-default">
+
+		<action name="findQuantitiesListByPage" class="quantitiesListAction" method="findQuantitiesListByPage">
+			<result>/jsp/quantitiesList/quantitiesListList.jsp</result>		
+		</action>
+		
+		<action name="showAdd" class="quantitiesListAction" method="showAdd">
+			<result>/jsp/quantitiesList/quantitiesListAdd.jsp</result>		
+		</action>
+		<action name="saveAdd" class="quantitiesListAction" method="saveAdd">
+			<result>/jsp/success.jsp</result>		
+		</action>
+		
+		<action name="showEdit" class="quantitiesListAction" method="showEdit">
+			<result>/jsp/quantitiesList/quantitiesListEdit.jsp</result>		
+		</action>
+		<action name="saveEdit" class="quantitiesListAction" method="saveEdit">
+			<result>/jsp/success.jsp</result>		
+		</action>
+		
+		<action name="showView" class="quantitiesListAction" method="showView">
+			<result>/jsp/quantitiesList/quantitiesListView.jsp</result>		
+		</action>
+		
+		<action name="delete" class="quantitiesListAction" method="delete" />
+		
+		<action name="saveOrUpdateOnPage" class="quantitiesListAction" method="saveOrUpdateOnPage" />
+		
+
+	</package>
+</struts>
+	

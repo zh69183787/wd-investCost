@@ -1,0 +1,16 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="MeetEvent" namespace="/meetEvent" extends="struts-default">
+
+        <action name="getSignedContractInfo" class="meetEventAction" method="getSignedContractInfo"/>
+
+        <action name="getFixContractInfo" class="meetEventAction" method="getFixContractInfo">
+            <result name="fix">/jsp/meetEvent/fixContractInfo.jsp</result>
+        </action>
+
+        <action name="getEvaluationInfo" class="meetEventAction" method="getEvaluationInfo"/>
+
+    </package>
+</struts>

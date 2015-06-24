@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<!-- NOTE: For Hibernate Session Factory Use Only -->
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.pool_size">1</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">false</property>
+        <property name="cache.provider_class">org.hibernate.cache.OSCacheProvider</property>
+        <property name="cache.use_query_cache">true</property>
+        <property name="query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</property>
+        <property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
+        <property name="proxool.pool_alias">pool1</property>
+        <property name="jdbc.batch_size">0</property>
+        <property name="jdbc.use_streams_for_binary">true</property>
+        <property name="max_fetch_depth">1</property>
+        <!-- set hbm2ddl strategy -->
+        <!--
+                <property name="hibernate.hbm2ddl.auto">update</property>
+            -->
+        <!-- add BO class Mapping here optionally -->
+        <mapping class="com.wonders.ic.contract.entity.bo.Contract"/>
+        <mapping class="com.wonders.ic.contractPlan.entity.bo.ContractPlan"/>
+        <mapping class="com.wonders.ic.investEstimate.entity.bo.InvestEstimate"/>
+        <mapping class="com.wonders.ic.investEstimateSubject.entity.bo.InvestEstimateSubject"/>
+        <mapping class="com.wonders.ic.project.entity.bo.Project"/>
+        <mapping class="com.wonders.ic.quantitiesList.entity.bo.QuantitiesList"/>
+        <mapping class="com.wonders.ic.quantitiesSubject.entity.bo.QuantitiesSubject"/>
+        <mapping class="com.wonders.ic.attach.entity.bo.Attach"/>
+        <mapping class="com.wonders.ic.wbs.entity.bo.Wbs"/>
+        <mapping class="com.wonders.ic.deptTree.entity.bo.DeptTree"/>
+        <mapping class="com.wonders.ic.contractStatus.entity.bo.ContractStatus"/>
+        <mapping class="com.wonders.ic.progress.entity.bo.Progress"/>
+        <mapping class="com.wonders.ic.dwProject.entity.bo.DwProject"/>
+        <mapping class="com.wonders.ic.dwProject.entity.bo.DwProjectInvestPay"/>
+        <mapping class="com.wonders.ic.dwContract.entity.bo.DwContractPay"/>
+        <mapping class="com.wonders.ic.dwContract.entity.bo.DwContractChange"/>
+        <mapping class="com.wonders.ic.dwProject.entity.bo.DwProjectApprove"/>
+        <mapping class="com.wonders.ic.corporation.entity.bo.PsCorporation"/>
+        <mapping class="com.wonders.ic.corporation.entity.bo.PsSupplier"/>
+        <mapping class="com.wonders.ic.contract.entity.bo.HtXx"/>
+        <mapping class="com.wonders.ic.contract.entity.bo.HtBa"/>
+        <mapping class="com.wonders.ic.contract.entity.bo.KpiClear"/>
+        <mapping class="com.wonders.ic.contract.entity.bo.KpiClearStatus"/>
+        <mapping class="com.wonders.ic.contract.entity.bo.UserGroup"/>
+        <mapping class="com.wonders.ic.contractChangeProtocol.entity.bo.ContractChangeProtocol"/>
+        <mapping class="com.wonders.ic.contractChangeItem.entity.bo.ContractChangeItem"/>
+        <mapping class="com.wonders.ic.dwContract.entity.bo.DwContractProgress"/>
+        <mapping class="com.wonders.ic.dwContract.entity.bo.DwContractCover"/>
+        <mapping class="com.wonders.ic.dwProject.entity.bo.DwProjectCover"/>
+        <mapping class="com.wonders.ic.dwContract.entity.bo.DwContractDestoryNumber"/>
+        <mapping class="com.wonders.ic.dwProject.entity.bo.DwProjectTemp"/>
+        <mapping class="com.wonders.ic.contract.entity.bo.CompanyRoute"/>
+        <mapping class="com.wonders.ic.jgjReport.entity.bo.DwJgjMajor"/>
+        <mapping class="com.wonders.ic.jgjReport.entity.bo.DwJgjProject"/>
+        <mapping class="com.wonders.ic.jgjReport.entity.bo.DwJgjProjectCount"/>
+        <mapping class="com.wonders.ic.jgjReport.entity.bo.DwJgjMajorCount"/>
+        <mapping class="com.wonders.ic.jgjReport.entity.bo.DwJgjProjectProgress"/>
+        <mapping class="com.wonders.ic.jgjReport.entity.bo.DwJgjMajorSeason"/>
+        <mapping class="com.wonders.ic.fund.entity.bo.FundPlan"/>
+        <mapping class="com.wonders.ic.fund.entity.bo.FundAllowance"/>
+    </session-factory>
+</hibernate-configuration>

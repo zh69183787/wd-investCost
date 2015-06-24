@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="dwContractPayDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.dwContract.dao.impl.DwContractPayDaoImpl">
+	</bean>
+	
+	<bean id="dwContractPayServiceImpl"
+		class="com.wonders.ic.dwContract.service.impl.DwContractPayServiceImpl">
+		<property name="dwContractPayDao" ref="dwContractPayDaoImpl" />
+	</bean>
+	
+	<bean id="dwContractPayService" parent="basicTxProxy">
+		<property name="target" ref="dwContractPayServiceImpl" />
+	</bean>
+	
+	<bean name="dwContractPayAction"
+		class="com.wonders.ic.dwContract.action.DwContractPayAction"
+		singleton="false">
+		<property name="dwContractPayService" ref="dwContractPayService"></property>	
+	</bean>
+	
+	
+	
+	<bean id="dwContractChangeDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.dwContract.dao.impl.DwContractChangeDaoImpl">
+	</bean>
+	
+	<bean id="dwContractChangeServiceImpl"
+		class="com.wonders.ic.dwContract.service.impl.DwContractChangeServiceImpl">
+		<property name="dwContractChangeDao" ref="dwContractChangeDaoImpl" />
+	</bean>
+	
+	<bean id="dwContractChangeService" parent="basicTxProxy">
+		<property name="target" ref="dwContractChangeServiceImpl" />
+	</bean>
+	
+	<bean name="dwContractChangeAction"
+		class="com.wonders.ic.dwContract.action.DwContractChangeAction"
+		singleton="false">
+		<property name="dwContractChangeService" ref="dwContractChangeService"></property>	
+	</bean>
+	
+	<!-- DwContractProgress -->
+	<bean id="dwContractProgressDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.dwContract.dao.impl.DwContractProgressDaoImpl">
+	</bean>
+	
+	<bean id="dwContractProgressServiceImpl"
+		class="com.wonders.ic.dwContract.service.impl.DwContractProgressServiceImpl">
+		<property name="dwContractProgressDao" ref="dwContractProgressDaoImpl" />
+	</bean>
+	
+	<bean id="dwContractProgressService" parent="basicTxProxy">
+		<property name="target" ref="dwContractProgressServiceImpl" />
+	</bean>
+	
+	<bean name="dwContractProgressAction"
+		class="com.wonders.ic.dwContract.action.DwContractProgressAction"
+		singleton="false">
+		<property name="dwContractProgressService" ref="dwContractProgressService"></property>	
+	</bean>
+
+	 <!-- DwContractCover --> 
+	<bean id="dwContractCoverDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.dwContract.dao.impl.DwContractCoverDaoImpl">
+	</bean>
+	
+	<bean id="dwContractCoverServiceImpl"
+		class="com.wonders.ic.dwContract.service.impl.DwContractCoverServiceImpl">
+		<property name="dwContractCoverDao" ref="dwContractCoverDaoImpl" />
+		<property name="contractDao" ref="contractDaoImpl" />
+		<property name="contractService" ref="contractServiceImpl" />
+		<property name="deptTreeService" ref="deptTreeServiceImpl" />
+	</bean>
+	
+	<bean id="dwContractCoverService" parent="basicTxProxy">
+		<property name="target" ref="dwContractCoverServiceImpl" />
+	</bean>
+	
+	<bean name="dwContractCoverAction"
+		class="com.wonders.ic.dwContract.action.DwContractCoverAction"
+		singleton="false">
+		<property name="dwContractCoverService" ref="dwContractCoverService"></property>	
+	</bean>
+	
+	<!-- DwContractDestoryNumber -->
+	<bean id="dwContractDestoryNumberDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.dwContract.dao.impl.DwContractDestoryNumberDaoImpl">
+	</bean>
+	
+	<bean id="dwContractDestoryNumberServiceImpl"
+		class="com.wonders.ic.dwContract.service.impl.DwContractDestoryNumberServiceImpl">
+		<property name="dwContractDestoryNumberDao" ref="dwContractDestoryNumberDaoImpl" />
+	</bean>
+	
+	<bean id="dwContractDestoryNumberService" parent="basicTxProxy">
+		<property name="target" ref="dwContractDestoryNumberServiceImpl" />
+	</bean>
+	
+	<bean name="dwContractDestoryNumberAction"
+		class="com.wonders.ic.dwContract.action.DwContractDestoryNumberAction"
+		singleton="false">
+		<property name="dwContractDestoryNumberService" ref="dwContractDestoryNumberService"></property>	
+	</bean>
+</beans>
+	

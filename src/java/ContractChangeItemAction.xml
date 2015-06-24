@@ -1,0 +1,30 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="contractChangeItemAction" namespace="/contractChangeItem" extends="cuteframework-default">
+		
+		<action name="changeItems" class="contractChangeItemAction" method="changeItems">
+			<result>/jsp/contractChangeItem/contract_change_items.jsp</result>
+		</action>
+		
+		<action name="changeItem" class="contractChangeItemAction" method="changeItem">
+			<result name="success">/jsp/contractChangeItem/contract_change_item.jsp</result>
+		</action>
+
+        <action name="uniqueNo" class="contractChangeItemAction" method="uniqueNo">
+
+        </action>
+
+
+		<action name="save" class="contractChangeItemAction" method="save">
+			<result name="changeItemAction" type="redirect">/contractChangeItem/changeItem.action?id=${contractChangeItem.id}</result>
+		</action>
+
+		
+		<action name="delete" class="contractChangeItemAction" method="delete">
+            <result name="changeItemsAction" type="redirect">/contractChangeItem/changeItems.action?contractId=${contractId}</result>
+         </action>
+	</package>
+</struts>
+	

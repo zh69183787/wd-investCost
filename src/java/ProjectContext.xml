@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	 
+	<bean id="projectDaoImpl" parent="abstractHibernateDao" class="com.wonders.ic.project.dao.impl.ProjectDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	 
+	<bean id="projectServiceImpl" class="com.wonders.ic.project.service.impl.ProjectServiceImpl">
+		<property name="projectDao" ref="projectDaoImpl"></property>
+	</bean>
+	
+	<bean id="projectService" parent="basicTxProxy">
+		<property name="target" ref="projectServiceImpl"></property>
+	</bean>
+	
+	<bean name="projectAction"
+		class="com.wonders.ic.project.action.ProjectAction" singleton="false">
+		<property name="projectService" ref="projectService"></property>	
+		<property name="attachService" ref="attachService"></property>
+		<property name="deptTreeService" ref="deptTreeService"></property>
+		<property name="progressService" ref="progressService"></property>
+		<property name="contractService" ref="contractService"></property>
+		<property name="dwProjectCoverService" ref="dwProjectCoverService"></property>
+		<property name="contractStatusService" ref="contractStatusService"></property>
+	</bean>
+
+</beans>
+	

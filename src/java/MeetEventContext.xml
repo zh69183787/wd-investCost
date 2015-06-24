@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+        "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean name="meetEventAction" class="com.wonders.ic.meetEvent.action.MeetEventAction" singleton="false">
+        <property name="meetEventService" ref="meetEventService" />
+        <property name="contractEventService" ref="contractEventService" />
+    </bean>
+
+    <bean id="meetEventService"
+          class="com.wonders.ic.meetEvent.service.impl.MeetEventServiceImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean id="contractEventService"
+          class="com.wonders.ic.meetEvent.service.impl.ContractEventServiceImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplateNew"/>
+    </bean>
+
+</beans>
+

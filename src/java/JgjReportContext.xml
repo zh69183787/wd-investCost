@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	 
+	  
+	<bean id="jgjReportDaoImpl" parent="abstractHibernateDao" class="com.wonders.ic.jgjReport.dao.impl.JgjReportDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	 
+	<bean id="jgjReportServiceImpl" class="com.wonders.ic.jgjReport.service.impl.JgjReportServiceImpl">
+		<property name="jgjReportDao" ref="jgjReportDaoImpl" />
+		<property name="contractStatusDao" ref="contractStatusDaoImpl" />
+	</bean>
+	
+	<bean id="jgjReportService" parent="basicTxProxy">
+		<property name="target" ref="jgjReportServiceImpl" />
+	</bean>
+	 
+	<bean name="jgjReportAction" class="com.wonders.ic.jgjReport.action.JgjReportAction" singleton="false">
+		<property name="jgjReportService" ref="jgjReportService" />
+	</bean>
+
+</beans>
+	

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+	 
+	<bean id="contractDaoImpl" parent="abstractHibernateDao" class="com.wonders.ic.contract.dao.impl.ContractDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+	</bean>
+    <bean id="shortMsgDaoImpl" class="com.wonders.ic.contract.dao.impl.ShortMsgDaoImpl">
+    <property name="sessionFactory" ref="sessionFactoryMsg" />
+    </bean>
+    <bean id="shortMsgServiceImpl" class="com.wonders.ic.contract.service.impl.ShortMsgServiceImpl">
+        <property name="shortMsgDao" ref="shortMsgDaoImpl" />
+    </bean>
+	<bean id="contractServiceImpl" class="com.wonders.ic.contract.service.impl.ContractServiceImpl">
+		<property name="contractDao" ref="contractDaoImpl" />
+		<property name="quantitiesSubjectDao" ref="quantitiesSubjectDaoImpl" />
+		<property name="quantitiesSubjectService" ref="quantitiesSubjectServiceImpl" />
+		<property name="wbsDao" ref="wbsDaoImpl" />
+	</bean>
+	
+	<bean id="contractService" parent="basicTxProxy">
+		<property name="target" ref="contractServiceImpl" />
+	</bean>
+    <bean id="shortMsgService" parent="basicTxProxy2">
+        <property name="target" ref="shortMsgServiceImpl" />
+    </bean>
+	
+	<bean name="contractAction" class="com.wonders.ic.contract.action.ContractAction" singleton="false">
+		<property name="contractService" ref="contractService"></property>
+		<property name="projectService" ref="projectService"></property>
+		<property name="attachService" ref="attachService"></property>
+		<property name="contractStatusService" ref="contractStatusService"></property>
+		<property name="quantitiesSubjectService" ref="quantitiesSubjectService"></property>
+		<property name="investEstimateSubjectService" ref="investEstimateSubjectService"></property>
+		<property name="deptTreeService" ref="deptTreeService"></property>
+		<property name="progressService" ref="progressService"></property>
+        <property name="dwContractCoverService" ref="dwContractCoverService"></property>
+        <property name="shortMsgService" ref="shortMsgService"></property>
+	</bean>
+
+</beans>
+	

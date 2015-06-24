@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+	 
+	<bean id="contractChangeItemDaoImpl" parent="abstractHibernateDao" class="com.wonders.ic.contractChangeItem.dao.impl.ContractChangeItemDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="contractChangeItemServiceImpl" class="com.wonders.ic.contractChangeItem.service.impl.ContractChangeItemServiceImpl">
+		<property name="contractChangeItemDao" ref="contractChangeItemDaoImpl" />
+<!-- 		<property name="quantitiesSubjectDao" ref="quantitiesSubjectDaoImpl" /> -->
+<!-- 		<property name="quantitiesSubjectService" ref="quantitiesSubjectServiceImpl" /> -->
+<!-- 		<property name="wbsDao" ref="wbsDaoImpl" /> -->
+<!-- 		<property name="shortMsgDao" ref="shortMsgDao"/> -->
+	</bean>
+	
+	<bean id="contractChangeItemService" parent="basicTxProxy">
+		<property name="target" ref="contractChangeItemServiceImpl" />
+	</bean>
+	
+	<bean name="contractChangeItemAction" class="com.wonders.ic.contractChangeItem.action.ContractChangeItemAction" singleton="false">
+		<property name="contractChangeItemService" ref="contractChangeItemService"></property>
+		<property name="contractService" ref="contractService"></property>
+	</bean>
+
+</beans>
+	

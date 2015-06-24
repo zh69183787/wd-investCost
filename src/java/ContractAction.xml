@@ -1,0 +1,107 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="contract" namespace="/contract" extends="cuteframework-default">
+		
+		<action name="findContractByPage" class="contractAction" method="findContractByPage">
+			<result>/jsp/contract/contractList.jsp</result>
+			<result name="viewOnly">/jsp/contract/contractListViewOnly.jsp</result>
+		</action>
+		
+		<action name="showAdd" class="contractAction" method="showAdd">
+			<result>/jsp/contract/contractAdd.jsp</result>
+		</action>
+		<action name="saveAdd" class="contractAction" method="saveAdd">
+			<result type="redirect">showEdit.action?id=${contract.id}</result>
+		</action>
+		
+		<action name="showView" class="contractAction" method="showView">
+			<result name="showView">/jsp/contract/contractView.jsp</result>
+		</action>
+		
+		<action name="showEdit" class="contractAction" method="showEdit">
+			<result name="showEdit">/jsp/contract/contractEdit.jsp</result>
+		</action>
+		<action name="saveEdit" class="contractAction" method="saveEdit">
+			<!-- <result>/jsp/success.jsp</result> -->
+			<result type="redirect">showEdit.action?id=${contract.id}</result>
+		</action>
+		
+		<action name="delete" class="contractAction" method="delete" />
+		
+		<action name="findByContractNoWithFuzzySearch" class="contractAction" method="findByContractNoWithFuzzySearch"/>
+		
+		<action name="findByContractNameWithFuzzySearch" class="contractAction" method="findByContractNameWithFuzzySearch"/>
+		
+		
+		<action name="deleteOnlogical" class="contractAction" method="deleteOnlogical"/>
+		
+		<action name="findOwnerWithFuzzySearch" class="contractAction" method="findOwnerWithFuzzySearch"/>
+		
+		<action name="bindEstimateSubject" class="contractAction" method="bindEstimateSubject"/>
+		
+		<action name="importHtXxToContract" class="contractAction" method="importHtXxToContract">
+			<result>/jsp/success.jsp</result>
+		</action>
+		
+		<action name="batchEdit" class="contractAction" method="batchEdit"/>
+		
+		<action name="showContractCover" class="contractAction" method="showContractCover">
+			<result>/jsp/contract/contractCover.jsp</result>
+		</action>
+		
+		<action name="showBatchUpload" class="contractAction" method="showBatchUpload">
+			<result>/jsp/contract/upload.jsp</result>
+		</action>
+		<action name="showBatchUploadCustomized" class="contractAction" method="showBatchUploadCustomized">
+			<result>/jsp/contract/uploadCustomized.jsp</result>
+		</action>
+		
+		<action name="batchUpload" class="contractAction" method="batchUpload"/>
+		<action name="batchUploadCustomized" class="contractAction" method="batchUploadCustomized"/>
+		
+		<action name="findByContractNoAndTypeWithFuzzySearch" class="contractAction" method="findByContractNoAndTypeWithFuzzySearch"/>
+		
+		<action name="findByContractNameAndTypeWithFuzzySearch" class="contractAction" method="findByContractNameAndTypeWithFuzzySearch"/>
+		
+		
+		<action name="downloadFile" class="contractAction" method="downloadFile"/>
+		
+		<action name="fileUpload" class="contractAction" method="fileUpload" />
+		
+		<action name="findContractByPageToBeComplemented" class="contractAction" method="findContractByPageToBeComplemented">
+			<result>/jsp/contract/contractListToBeComplemented.jsp</result>
+		</action>
+		
+		<action name="findByCondition" class="contractAction" method="findByCondition">
+			<result>/jsp/contract/conditionList.jsp</result>
+		</action>
+		
+		<action name="findContractBySelfNoWithFuzzySearch" class="contractAction" method="findContractBySelfNoWithFuzzySearch"/>
+		
+		<action name="findCompanyRouteWithFuzzySearch" class="contractAction" method="findCompanyRouteWithFuzzySearch"/>
+		
+		<action name="findLineByCompanyId" class="contractAction" method="findLineByCompanyId"/>
+		
+		
+		<action name="findByNewCondition" class="contractAction" method="findByNewCondition">
+			<result>/jsp/contract/newConditionList.jsp</result>
+		</action>
+		<action name="findNewContractByPageToBeComplemented" class="contractAction" method="findNewContractByPageToBeComplemented">
+			<result>/jsp/contract/newContractListToBeComplemented.jsp</result>
+		</action>
+		
+		<action name="updateContractEvaluate" class="contractAction" method="updateContractEvaluate"/>
+		<action name="pushContractToDataCenter" class="contractAction" method="pushContractToDataCenter"/>
+		
+		<action name="kpiClearList" class="contractAction" method="kpiClearList">
+			<result>/jsp/contract/kpiClear.jsp</result>
+		</action>
+		
+		<action name="viewKpiClear" class="contractAction" method="viewKpiClear"/>
+		
+		<action name="saveKpiClear" class="contractAction" method="saveKpiClear"/>
+	</package>
+</struts>
+	

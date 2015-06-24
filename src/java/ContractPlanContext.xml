@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	 
+	<bean id="contractPlanDaoImpl" parent="abstractHibernateDao" class="com.wonders.ic.contractPlan.dao.impl.ContractPlanDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	 
+	<bean id="contractPlanServiceImpl" class="com.wonders.ic.contractPlan.service.impl.ContractPlanServiceImpl">
+		<property name="contractPlanDao" ref="contractPlanDaoImpl" />
+	</bean>
+	
+	<bean id="contractPlanService" parent="basicTxProxy">
+		<property name="target" ref="contractPlanServiceImpl" />
+	</bean>
+	
+	<bean name="contractPlanAction"
+		class="com.wonders.ic.contractPlan.action.ContractPlanAction"
+		singleton="false">
+		<property name="contractPlanService" ref="contractPlanService"></property>	
+	</bean>
+
+</beans>
+	

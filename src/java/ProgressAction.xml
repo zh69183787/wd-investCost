@@ -1,0 +1,17 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="Progress" namespace="/progress" extends="cuteframework-default">
+
+		<action name="saveAddProgress" class="progressAction" method="saveAddProgress"/>
+		
+		<action name="saveEditProgress" class="progressAction" method="saveEditProgress"/>
+		
+		<action name="deleteProgress" class="progressAction" method="deleteProgress"/>
+		
+		<action name="progressService" class="progressAction" method="progressService"/>
+		
+	</package>
+</struts>
+	

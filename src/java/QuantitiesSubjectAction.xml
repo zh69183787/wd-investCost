@@ -1,0 +1,33 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="quantitiesSubject" namespace="/quantitiesSubject" extends="cuteframework-default">
+
+		<action name="findQuantitiesSubjectByPage" class="quantitiesSubjectAction" method="findQuantitiesSubjectByPage">
+			<result>/jsp/quantitiesSubject/quantitiesSubjectList.jsp</result>
+		</action>
+
+		<action name="saveAddOnPage" class="quantitiesSubjectAction" method="saveAddOnPage"/>
+
+		<action name="saveEditOnPage" class="quantitiesSubjectAction" method="saveEditOnPage"/>
+
+		<action name="deleteAll" class="quantitiesSubjectAction" method="deleteAll"/>
+	
+		<action name="findSubject" class="quantitiesSubjectAction" method="findSubject"/>
+		
+		<action name="saveSubjectOnPage" class="quantitiesSubjectAction" method="saveSubjectOnPage"/>
+		
+		<action name="saveAddOnPageSpecial" class="quantitiesSubjectAction" method="saveAddOnPageSpecial"/>
+		
+		<action name="saveEditOnPageSpecial" class="quantitiesSubjectAction" method="saveEditOnPageSpecial" />
+		
+		<action name="deleteSpecial" class="quantitiesSubjectAction" method="deleteSpecial"/>
+		
+		<action name="compute" class="quantitiesSubjectAction" method="compute"/>
+		
+		<action name="findSubjectByProjectId" class="quantitiesSubjectAction" method="findSubjectByProjectId"/>
+		
+	</package>
+</struts>
+	

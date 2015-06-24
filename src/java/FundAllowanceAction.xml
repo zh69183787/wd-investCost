@@ -1,0 +1,45 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="fundAllowance" namespace="/fundAllowance" extends="cuteframework-default">
+		<action name="findFundAllowanceByPage" class="fundAllowanceAction" method="findFundAllowanceByPage">
+			<result>/jsp/fund/fundAllowanceList.jsp</result>
+		</action>
+		
+		<action name="showAdd" class="fundAllowanceAction" method="showAdd">
+			<result>/jsp/fund/fundAllowanceAdd.jsp</result>
+		</action>
+		
+		<action name="saveAdd" class="fundAllowanceAction" method="saveAdd">
+			<result name="input">/jsp/fund/fundAllowanceAdd.jsp</result>
+			<result name="success" type="redirect">showEdit.action?id=${fundAllowance.id}&amp;saveStatus=1</result>
+		</action>
+		
+		<action name="saveEdit" class="fundAllowanceAction" method="saveEdit">
+			<result name="input">/jsp/fund/fundAllowanceEdit.jsp</result>
+			<result name="success" type="redirect">showEdit.action?id=${fundAllowance.id}&amp;saveStatus=1</result>
+		</action>	
+		
+		<action name="showEdit" class="fundAllowanceAction" method="showEdit">
+			<result name="showEdit">/jsp/fund/fundAllowanceEdit.jsp</result>
+		</action>
+		
+		<action name="showView" class="fundAllowanceAction" method="showView">
+			<result>/jsp/fund/fundAllowanceView.jsp</result>
+		</action>
+		
+		<action name="showBatchUpload" class="fundAllowanceAction" method="showBatchUpload">
+			<result>/jsp/fund/fundAllowanceUpload.jsp</result>
+		</action>
+		
+		<action name="delete" class="fundAllowanceAction" method="delete"/>
+		
+		<action name="export" class="fundAllowanceAction" method="export"/>
+		
+		<action name="batchUpload" class="fundAllowanceAction" method="batchUpload"/>
+		
+		<action name="downloadFile" class="fundAllowanceAction" method="downloadFile"/>
+	</package>
+</struts>
+	

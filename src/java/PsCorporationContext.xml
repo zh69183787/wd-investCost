@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="psCorporationDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.corporation.dao.impl.PsCorporationDaoImpl">
+	</bean>
+	
+	<bean id="psCorporationServiceImpl"
+		class="com.wonders.ic.corporation.service.impl.PsCorporationServiceImpl">
+		<property name="psCorporationDao" ref="psCorporationDaoImpl" />
+	</bean>
+	
+	<bean id="psCorporationService" parent="basicTxProxy">
+		<property name="target" ref="psCorporationServiceImpl" />
+	</bean>
+	
+	<bean name="psCorporationAction"
+		class="com.wonders.ic.corporation.action.PsCorporationAction"
+		singleton="false">
+		<property name="psCorporationService" ref="psCorporationService"></property>	
+	</bean>
+
+    <bean id="supplierDaoImpl" parent="abstractHibernateDao"
+          class="com.wonders.ic.corporation.dao.impl.PsSupplierDaoImpl">
+    </bean>
+
+    <bean id="supplierServiceImpl"
+          class="com.wonders.ic.corporation.service.impl.PsSupplierServiceImpl">
+        <property name="supplierDao" ref="supplierDaoImpl" />
+    </bean>
+
+    <bean id="supplierService" parent="basicTxProxy">
+        <property name="target" ref="supplierServiceImpl" />
+    </bean>
+
+    <bean name="psSupplierAction"
+          class="com.wonders.ic.corporation.action.PsSupplierAction"
+          singleton="false">
+        <property name="supplierService" ref="supplierService"></property>
+    </bean>
+
+</beans>
+	

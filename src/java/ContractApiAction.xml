@@ -1,0 +1,18 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="ContractApi" namespace="/api/contract" extends="cuteframework-default">
+
+         <action name="getKpiClearCount" class="contractApiAction" method="getKpiClearCount"/>
+         
+         <action name="contracts" class="contractApiAction" method="contracts"/>
+        <action name="history" class="contractApiAction" method="history"/>
+         
+         <action name="changeItems" class="contractApiAction" method="changeItems"/>
+
+        <action name="syncData" class="contractApiAction" method="syncData"/>
+
+
+    </package>
+</struts>

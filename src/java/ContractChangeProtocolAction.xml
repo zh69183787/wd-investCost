@@ -1,0 +1,27 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="contractChangeProtocolAction" namespace="/contractChangeProtocol" extends="cuteframework-default">
+		
+		<action name="protocols" class="contractChangeProtocolAction" method="protocols">
+			<result>/jsp/contractChangeProtocol/contract_change_protocols.jsp</result>
+		</action>
+		
+		<action name="protocol" class="contractChangeProtocolAction" method="protocol">
+			<result name="success">/jsp/contractChangeProtocol/contract_change_protocol.jsp</result>
+		</action>
+
+
+		<action name="save" class="contractChangeProtocolAction" method="save">
+			<result name="protocolAction" type="redirect">/contractChangeProtocol/protocol.action?id=${contractChangeProtocol.id}</result>
+		</action>
+
+		
+		<action name="delete" class="contractChangeProtocolAction" method="delete">
+            <result name="protocolsAction" type="redirect">/contractChangeProtocol/protocols.action?contractId=${contractId}</result>
+         </action>
+
+	</package>
+</struts>
+	

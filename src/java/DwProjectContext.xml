@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+
+	<bean id="dwProjectDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.dwProject.dao.impl.DwProjectDaoImpl">
+	</bean>
+	
+	<bean id="dwProjectServiceImpl"
+		class="com.wonders.ic.dwProject.service.impl.DwProjectServiceImpl">
+		<property name="dwProjectDao" ref="dwProjectDaoImpl" />
+	</bean>
+	
+	<bean id="dwProjectService" parent="basicTxProxy">
+		<property name="target" ref="dwProjectServiceImpl" />
+	</bean>
+	
+	<bean id="dwProjectAction" class="com.wonders.ic.dwProject.action.DwProjectAction" singleton="false">
+		<property name="dwProjectService" ref="dwProjectService" />
+	</bean>
+	
+	
+	<bean id="dwProjectInvestPayDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.dwProject.dao.impl.DwProjectInvestPayDaoImpl">
+	</bean>
+	
+	<bean id="dwProjectInvestPayServiceImpl"
+		class="com.wonders.ic.dwProject.service.impl.DwProjectInvestPayServiceImpl">
+		<property name="dwProjectInvestPayDao" ref="dwProjectInvestPayDaoImpl" />
+	</bean>
+	
+	<bean id="dwProjectInvestPayService" parent="basicTxProxy">
+		<property name="target" ref="dwProjectInvestPayServiceImpl" />
+	</bean>
+	
+	<bean id="dwProjectInvestPayAction" class="com.wonders.ic.dwProject.action.DwProjectInvestPayAction" singleton="false">
+		<property name="dwProjectInvestPayService" ref="dwProjectInvestPayService" />
+	</bean>
+
+
+	<bean id="dwProjectApproveDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.dwProject.dao.impl.DwProjectApproveDaoImpl">
+	</bean>
+	
+	<bean id="dwProjectApproveServiceImpl"
+		class="com.wonders.ic.dwProject.service.impl.DwProjectApproveServiceImpl">
+		<property name="dwProjectApproveDao" ref="dwProjectApproveDaoImpl" />
+	</bean>
+	
+	<bean id="dwProjectApproveService" parent="basicTxProxy">
+		<property name="target" ref="dwProjectApproveServiceImpl" />
+	</bean>
+	
+	<bean id="dwProjectApproveAction" class="com.wonders.ic.dwProject.action.DwProjectApproveAction" singleton="false">
+		<property name="dwProjectApproveService" ref="dwProjectApproveService" />
+	</bean>
+	
+	<!-- cover -->
+	<bean id="dwProjectCoverDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.dwProject.dao.impl.DwProjectCoverDaoImpl">
+	</bean>
+	
+	<bean id="dwProjectCoverServiceImpl"
+		class="com.wonders.ic.dwProject.service.impl.DwProjectCoverServiceImpl">
+		<property name="dwProjectCoverDao" ref="dwProjectCoverDaoImpl" />
+		<property name="projectDao" ref="projectDaoImpl" />
+		<property name="projectService" ref="projectServiceImpl" />
+		<property name="deptTreeService" ref="deptTreeServiceImpl" />
+	</bean>
+	
+	<bean id="dwProjectCoverService" parent="basicTxProxy">
+		<property name="target" ref="dwProjectCoverServiceImpl" />
+	</bean>
+	
+	<bean id="dwProjectCoverAction" class="com.wonders.ic.dwProject.action.DwProjectCoverAction" singleton="false">
+		<property name="dwProjectCoverService" ref="dwProjectCoverService" />
+	</bean>
+	
+	<!-- sunjiawei -->
+	<bean id="dwProjectTempDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.dwProject.dao.impl.DwProjectTempDaoImpl">
+	</bean>
+	
+	<bean id="dwProjectTempServiceImpl"
+		class="com.wonders.ic.dwProject.service.impl.DwProjectTempServiceImpl">
+		<property name="dwProjectTempDao" ref="dwProjectTempDaoImpl" />
+	</bean>
+	
+	<bean id="dwProjectTempService" parent="basicTxProxy">
+		<property name="target" ref="dwProjectTempServiceImpl" />
+	</bean>
+	
+	<bean id="dwProjectTempAction" class="com.wonders.ic.dwProject.action.DwProjectTempAction" singleton="false">
+		<property name="dwProjectTempService" ref="dwProjectTempService" />
+	</bean>
+	
+</beans>
+	

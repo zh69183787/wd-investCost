@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://contract.webservice.wonders.com/" targetNamespace="http://contract.webservice.wonders.com/" version="1.0">
+
+  <xs:element name="saveContract" type="tns:saveContract"/>
+
+  <xs:element name="saveContractResponse" type="tns:saveContractResponse"/>
+
+  <xs:complexType name="saveContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveContractResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

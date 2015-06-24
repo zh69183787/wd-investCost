@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	 
+	<bean id="quantitiesSubjectDaoImpl" parent="abstractHibernateDao" class="com.wonders.ic.quantitiesSubject.dao.impl.QuantitiesSubjectDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	 
+	 
+	<bean id="quantitiesSubjectServiceImpl" class="com.wonders.ic.quantitiesSubject.service.impl.QuantitiesSubjectServiceImpl">
+		<property name="quantitiesSubjectDao" ref="quantitiesSubjectDaoImpl" />
+		<property name="wbsDao" ref="wbsDaoImpl" />
+		<property name="quantitiesListDao" ref="quantitiesListDaoImpl" />
+	</bean>
+	
+	<bean id="quantitiesSubjectService" parent="basicTxProxy">
+		<property name="target" ref="quantitiesSubjectServiceImpl" /> 
+	</bean>
+	
+	<bean name="quantitiesSubjectAction" class="com.wonders.ic.quantitiesSubject.action.QuantitiesSubjectAction" singleton="false">
+		<property name="quantitiesSubjectService" ref="quantitiesSubjectService"></property>
+		<property name="contractService" ref="contractService"></property>
+		<property name="quantitiesListService" ref="quantitiesListService"></property>
+		<property name="wbsService" ref="wbsService"></property>
+		<property name="projectService" ref="projectService"></property>
+		<property name="subjectService" ref="investEstimateSubjectService"></property>
+		
+	</bean>
+
+</beans>
+	

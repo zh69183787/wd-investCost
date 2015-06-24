@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="progressDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.ic.progress.dao.impl.ProgressDaoImpl">
+	</bean>
+	
+	<bean id="progressServiceImpl"
+		class="com.wonders.ic.progress.service.impl.ProgressServiceImpl">
+		<property name="progressDao" ref="progressDaoImpl" />
+	</bean>
+	
+	<bean id="progressService" parent="basicTxProxy">
+		<property name="target" ref="progressServiceImpl" />
+	</bean>
+	
+	<bean name="progressAction"
+		class="com.wonders.ic.progress.action.ProgressAction"
+		singleton="false">
+		<property name="progressService" ref="progressService"></property>	
+	</bean>
+
+</beans>
+	
